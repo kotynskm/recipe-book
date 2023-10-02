@@ -1,2 +1,9 @@
-<p>shopping-list works!</p>
-<app-shopping-list-edit></app-shopping-list-edit>
+<div class="container">
+  <h1>Shopping List</h1>
+  <app-shopping-list-edit></app-shopping-list-edit>
+  <ul class="list-group" *ngFor="let ingredient of ingredients">
+    <a class="list-group-item"
+      >{{ ingredient.name }}: {{ ingredient.amount }}</a
+    >
+  </ul>
+</div>

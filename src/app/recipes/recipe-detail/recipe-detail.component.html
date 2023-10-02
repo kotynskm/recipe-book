@@ -1,1 +1,16 @@
-<p>Recipe Details:</p>
+<div class="container">
+  <h2>Recipe Details</h2>
+  <div class="card" style="width: 18rem">
+    <img
+      src="{{ recipe.imageUrl }}"
+      class="card-img-top img-responsive"
+      alt="..."
+    />
+    <div class="card-body">
+      <p class="card-text">{{ recipe.title }}</p>
+    </div>
+  </div>
+  <button class="btn btn-danger">Delete Recipe</button>
+  <button class="btn btn-primary">Edit Recipe</button>
+  <button class="btn btn-secondary">Add Items to Shopping List</button>
+</div>

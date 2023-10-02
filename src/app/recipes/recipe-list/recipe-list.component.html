@@ -1,13 +1,16 @@
-<h1>Recipe List</h1>
-<button class="btn btn-success">Add Recipe</button>
-<div *ngFor="let recipe of recipes" class="card" style="width: 18rem">
-  <img
-    src="{{ recipe.imageUrl }}"
-    class="card-img-top img-responsive"
-    alt="spaghetti on a white plate"
-  />
-  <div class="card-body">
-    <p class="card-text">{{ recipe.title }}</p>
-    <p class="card-text">{{ recipe.description }}</p>
+<div class="container">
+  <h2>Recipe List</h2>
+  <button class="btn btn-success">Add Recipe</button>
+  <div *ngFor="let recipe of recipes" class="card" style="width: 18rem">
+    <img
+      src="{{ recipe.imageUrl }}"
+      class="card-img-top img-responsive"
+      alt="spaghetti on a white plate"
+    />
+    <div class="card-body">
+      <p class="card-text">{{ recipe.title }}</p>
+      <p class="card-text">{{ recipe.description }}</p>
+      <a routerLink="./recipe-details/{{ recipe.id }}">Go to Details</a>
+    </div>
   </div>
 </div>
