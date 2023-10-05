@@ -1,1 +1,12 @@
-<p>recipe-item works!</p>
+<div class="card" style="width: 18rem">
+  <img
+    src="{{ recipe.imageUrl }}"
+    class="card-img-top img-responsive"
+    alt="spaghetti on a white plate"
+  />
+  <div class="card-body">
+    <p class="card-text">{{ recipe.title }}</p>
+    <p class="card-text">{{ recipe.description }}</p>
+    <a routerLink="./recipe-details/{{ recipe.id }}">Go to Details</a>
+  </div>
+</div>
