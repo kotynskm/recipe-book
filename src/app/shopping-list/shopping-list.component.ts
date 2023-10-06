@@ -11,4 +11,9 @@ export class ShoppingListComponent {
     new Ingredient(5, 'apples'),
     new Ingredient(10, 'tomatoes'),
   ];
+
+  // get event from child component
+  addIngredient(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
 }
