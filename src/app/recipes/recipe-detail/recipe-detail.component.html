@@ -10,7 +10,14 @@
       <p class="card-text">{{ recipe.title }}</p>
     </div>
   </div>
-  <button class="btn btn-danger">Delete Recipe</button>
-  <button class="btn btn-primary">Edit Recipe</button>
-  <button class="btn btn-secondary">Add Items to Shopping List</button>
+  <div class="btn-group" appDropdown>
+    <button type="button" class="btn btn-primary dropdown-toggle">
+      Manage Recipe
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Add Ingredients to Shopping List</a></li>
+      <li><a href="#">Edit Recipe</a></li>
+      <li><a href="#">Delete Recipe</a></li>
+    </ul>
+  </div>
 </div>
