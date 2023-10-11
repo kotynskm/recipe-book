@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Ingredient } from 'src/app/shared/ingredient-model';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -8,8 +9,10 @@ import { Ingredient } from 'src/app/shared/ingredient-model';
   styleUrls: ['./shopping-list-edit.component.css'],
 })
 export class ShoppingListEditComponent {
-  constructor(private formBuilder: FormBuilder) {}
-  @Output() ingredientAdded = new EventEmitter<Ingredient>();
+  constructor(
+    private formBuilder: FormBuilder,
+    private shoppinglistService: ShoppingListService
+  ) {}
 
   ingredientForm = this.formBuilder.group({
     name: '',
@@ -22,6 +25,6 @@ export class ShoppingListEditComponent {
       this.ingredientForm.value.amount,
       this.ingredientForm.value.name
     );
-    this.ingredientAdded.emit(addedIngredient);
+    this.shoppinglistService.addIngredient(addedIngredient);
   }
 }
