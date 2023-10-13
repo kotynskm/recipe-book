@@ -22,7 +22,22 @@ export class RecipeService {
         new Ingredient(1, 'parmesan cheese'),
       ]
     ),
+    new Recipe(
+      2,
+      'Mashed Potatoes',
+      'Buttery and creamy, just like grandma used to make',
+      'https://images-gmi-pmc.edge-generalmills.com/1156f4ec-29c8-4cd9-80db-7d4ee330b1d0.jpg',
+      [
+        new Ingredient(5, 'potatoes'),
+        new Ingredient(1, 'butter'),
+        new Ingredient(1, 'heavy cream'),
+      ]
+    ),
   ];
+
+  getRecipe(id: number) {
+    return this.recipes.find((el) => el.id === id);
+  }
 
   // get access to recipes from outside
   getRecipes() {

@@ -4,6 +4,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { HomeComponent } from './home/home.component';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
     path: 'recipes',
     component: RecipesComponent,
     children: [
-      { path: 'recipe-details/:recipeID', component: RecipeDetailComponent },
+      { path: '', component: RecipeStartComponent },
+      { path: 'recipe-details/:id', component: RecipeDetailComponent },
     ],
   },
   { path: 'shopping-list', component: ShoppingListComponent },

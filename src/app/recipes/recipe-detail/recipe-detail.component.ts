@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Recipe } from '../recipe-model';
 import { RecipeService } from '../recipe.service';
 import { Ingredient } from 'src/app/shared/ingredient-model';
@@ -16,14 +16,15 @@ export class RecipeDetailComponent {
     private route: ActivatedRoute,
     private recipeService: RecipeService
   ) {}
-  recipeID: string;
+  id: number;
   recipe: Recipe;
 
   ngOnInit() {
-    this.recipeID = this.route.snapshot.paramMap.get('recipeID');
-    this.recipe = this.recipeService
-      .getRecipes()
-      .find((element) => element.id.toString() === this.recipeID);
+    // subscribe to params to react to dynamic changes in the url
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.recipe = this.recipeService.getRecipe(this.id);
+    });
   }
 
   sendIngredientsToShoppingList() {
