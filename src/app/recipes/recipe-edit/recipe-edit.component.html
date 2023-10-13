@@ -1,0 +1,48 @@
+<div class="container">
+  <form
+    #f="ngForm"
+    class="recipe-edit"
+    [formGroup]="recipeEditForm"
+    (ngSubmit)="recipeFormSubmit()"
+  >
+    <label>Enter a recipe title</label>
+    <input
+      type="text"
+      id="title"
+      required
+      placeholder="recipe title"
+      formControlName="title"
+    />
+    <label>Enter a recipe description</label>
+    <input
+      type="text"
+      id="description"
+      required
+      placeholder="recipe description"
+      formControlName="description"
+    />
+    <label>Enter a recipe image url</label>
+    <input
+      type="text"
+      id="imageUrl"
+      required
+      placeholder="recipe url"
+      formControlName="imageUrl"
+    />
+    <label>Enter a recipe ingredient name</label>
+    <input
+      type="text"
+      id="ingredient.name"
+      required
+      placeholder="recipe ingredient"
+      formControlName="ingredients.name"
+    />
+    <label>Enter a recipe ingredient amount</label>
+    <input
+      type="number"
+      id="ingredient.amount"
+      formControlName="ingredients.amount"
+    />
+    <button [disabled]="!f.valid" class="btn btn-success">Submit</button>
+  </form>
+</div>
