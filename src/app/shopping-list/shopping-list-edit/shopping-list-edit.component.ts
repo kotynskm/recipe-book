@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Ingredient } from 'src/app/shared/ingredient-model';
 import { ShoppingListService } from '../shopping-list.service';

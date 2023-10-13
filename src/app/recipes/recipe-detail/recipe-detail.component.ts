@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Recipe } from '../recipe-model';
 import { RecipeService } from '../recipe.service';
-import { Ingredient } from 'src/app/shared/ingredient-model';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,8 +9,6 @@ import { Ingredient } from 'src/app/shared/ingredient-model';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent {
-  @Output() sendIngredients = new EventEmitter<Ingredient[]>();
-
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService
