@@ -1,9 +1,9 @@
 <div class="container">
   <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
     <label>Ingredient Name</label>
-    <input type="text" id="name" formControlName="name" />
+    <input type="text" id="name" required formControlName="name" />
     <label>Ingredient Amount</label>
-    <input type="number" id="amount" formControlName="amount" />
+    <input type="number" id="amount" required formControlName="amount" />
     <button class="btn btn-primary" type="submit">Submit</button>
     <button class="btn btn-danger" type="button">Delete</button>
     <button class="btn btn-secondary">Clear</button>

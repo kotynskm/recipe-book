@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Ingredient } from 'src/app/shared/ingredient-model';
-import { Recipe } from '../recipe-model';
 
 @Component({
   selector: 'app-recipe-edit',
