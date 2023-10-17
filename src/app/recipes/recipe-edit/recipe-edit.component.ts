@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import {
+  AbstractControlOptions,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -15,12 +19,14 @@ export class RecipeEditComponent {
 
   id: number;
   editMode: boolean = false;
+  controlOptions: AbstractControlOptions = { validators: Validators.required };
 
   recipeEditForm = this.formBuilder.group({
     title: '',
     description: '',
     imageUrl: '',
     ingredients: [{ name: '', amount: 0 }],
+    requiredControl: ['', this.controlOptions],
   });
 
   ngOnInit() {

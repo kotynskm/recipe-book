@@ -1,6 +1,5 @@
 <div class="container">
   <form
-    #f="ngForm"
     class="recipe-edit"
     [formGroup]="recipeEditForm"
     (ngSubmit)="recipeFormSubmit()"
@@ -9,31 +8,48 @@
     <input
       type="text"
       id="title"
-      required
       placeholder="recipe title"
       formControlName="title"
     />
+    <span
+      *ngIf="
+        !recipeEditForm.get('requiredControl').valid &&
+        recipeEditForm.get('title').touched
+      "
+      >Please enter a valid recipe title!</span
+    >
     <label>Enter a recipe description</label>
     <input
       type="text"
       id="description"
-      required
       placeholder="recipe description"
       formControlName="description"
     />
+    <span
+      *ngIf="
+        !recipeEditForm.get('requiredControl').valid &&
+        recipeEditForm.get('description').touched
+      "
+      >Please enter a valid description!</span
+    >
     <label>Enter a recipe image url</label>
     <input
       type="text"
       id="imageUrl"
-      required
       placeholder="recipe url"
       formControlName="imageUrl"
     />
+    <span
+      *ngIf="
+        !recipeEditForm.get('requiredControl').valid &&
+        recipeEditForm.get('imageUrl').touched
+      "
+      >Please enter a valid image URL!</span
+    >
     <label>Enter a recipe ingredient name</label>
     <input
       type="text"
       id="ingredient.name"
-      required
       placeholder="recipe ingredient"
       formControlName="ingredients.name"
     />
@@ -43,6 +59,6 @@
       id="ingredient.amount"
       formControlName="ingredients.amount"
     />
-    <button [disabled]="!f.valid" class="btn btn-success">Submit</button>
+    <button class="btn btn-success">Submit</button>
   </form>
 </div>
