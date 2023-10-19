@@ -1,8 +1,15 @@
 <div class="container">
   <h1>Shopping List</h1>
-  <app-shopping-list-edit></app-shopping-list-edit>
-  <ul class="list-group" *ngFor="let ingredient of ingredients">
-    <a class="list-group-item"
+  <app-shopping-list-edit
+    [selectedIngredient]="selectedIngredient"
+    [isEditing]="isEditing"
+    [ingredientIndex]="ingredientIndex"
+    (finishedEditing)="resetEditing()"
+  ></app-shopping-list-edit>
+  <ul class="list-group" *ngFor="let ingredient of ingredients; let i = index">
+    <a
+      class="list-group-item"
+      (click)="onSelectedIng(ingredient.name, ingredient.amount, i)"
       >{{ ingredient.name }}: {{ ingredient.amount }}</a
     >
   </ul>

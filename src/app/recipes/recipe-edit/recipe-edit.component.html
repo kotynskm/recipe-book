@@ -46,19 +46,23 @@
       "
       >Please enter a valid image URL!</span
     >
-    <label>Enter a recipe ingredient name</label>
-    <input
-      type="text"
-      id="ingredient.name"
-      placeholder="recipe ingredient"
-      formControlName="ingredients.name"
-    />
-    <label>Enter a recipe ingredient amount</label>
-    <input
-      type="number"
-      id="ingredient.amount"
-      formControlName="ingredients.amount"
-    />
+    <div formArrayName="ingredients">
+      <label>Enter a recipe ingredient name</label>
+      <button class="btn btn-default" type="button" (click)="onAddIngredient()">
+        Add Ingredient
+      </button>
+      <div *ngFor="let ingredientControl of getControls(); let i = index">
+        <input type="text" [formControlName]="i" />
+      </div>
+      <!-- <input
+        type="text"
+        id="name"
+        placeholder="recipe ingredient"
+        formControlName="ingredients.name"
+      />
+      <label>Enter a recipe ingredient amount</label>
+      <input type="number" id="amount" formControlName="ingredients.amount" /> -->
+    </div>
     <button class="btn btn-success">Submit</button>
   </form>
 </div>
