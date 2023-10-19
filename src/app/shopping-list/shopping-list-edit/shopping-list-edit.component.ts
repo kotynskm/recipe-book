@@ -67,4 +67,15 @@ export class ShoppingListEditComponent implements OnChanges {
     }
     return null;
   }
+
+  onClear() {
+    this.ingredientForm.reset();
+    this.isEditing = false;
+  }
+
+  onDelete() {
+    this.shoppinglistService.deleteIngredient(this.ingredientIndex);
+    this.finishedEditing.emit();
+    this.onClear();
+  }
 }

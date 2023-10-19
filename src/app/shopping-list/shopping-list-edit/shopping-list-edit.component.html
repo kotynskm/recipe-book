@@ -11,7 +11,16 @@
     >
       {{ isEditing ? "Edit" : "Add" }}
     </button>
-    <button class="btn btn-danger" type="button">Delete</button>
-    <button class="btn btn-secondary">Clear</button>
+    <button
+      *ngIf="isEditing"
+      class="btn btn-danger"
+      type="button"
+      (click)="onDelete()"
+    >
+      Delete
+    </button>
+    <button class="btn btn-secondary" type="button" (click)="onClear()">
+      Clear
+    </button>
   </form>
 </div>
