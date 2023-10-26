@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../recipe-model';
 import { RecipeService } from '../recipe.service';
 
@@ -11,7 +11,8 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailComponent {
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private router: Router
   ) {}
   id: number;
   recipe: Recipe;
@@ -26,5 +27,10 @@ export class RecipeDetailComponent {
 
   sendIngredientsToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
+
+  deleteRecipe(id: number) {
+    this.recipeService.deleteRecipe(id);
+    this.router.navigate(['/recipes']);
   }
 }

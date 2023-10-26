@@ -25,7 +25,7 @@
         </a>
       </li>
       <li><a routerLink="../../recipe-edit/{{ recipe.id }}">Edit Recipe</a></li>
-      <li><a href="#">Delete Recipe</a></li>
+      <li><a (click)="deleteRecipe(recipe.id)">Delete Recipe</a></li>
     </ul>
   </div>
 </div>

@@ -63,6 +63,12 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
 
+  deleteRecipe(id: number) {
+    const indexOfRecipe = this.recipes.findIndex((recipe) => recipe.id === id);
+    this.recipes.splice(indexOfRecipe, 1);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppinglistservice.addIngredients(ingredients);
   }
