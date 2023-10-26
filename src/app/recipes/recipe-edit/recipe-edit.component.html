@@ -4,65 +4,51 @@
     [formGroup]="recipeEditForm"
     (ngSubmit)="recipeFormSubmit()"
   >
-    <label>Enter a recipe title</label>
+    <label>Title</label>
     <input
       type="text"
       id="title"
       placeholder="recipe title"
       formControlName="title"
     />
-    <span
-      *ngIf="
-        !recipeEditForm.get('requiredControl').valid &&
-        recipeEditForm.get('title').touched
-      "
-      >Please enter a valid recipe title!</span
-    >
-    <label>Enter a recipe description</label>
-    <input
+    <label>Description</label>
+    <textarea
       type="text"
       id="description"
-      placeholder="recipe description"
+      placeholder="description"
       formControlName="description"
-    />
-    <span
-      *ngIf="
-        !recipeEditForm.get('requiredControl').valid &&
-        recipeEditForm.get('description').touched
-      "
-      >Please enter a valid description!</span
-    >
-    <label>Enter a recipe image url</label>
+      rows="6"
+    ></textarea>
+
+    <label>Image Url</label>
     <input
       type="text"
       id="imageUrl"
       placeholder="recipe url"
       formControlName="imageUrl"
     />
-    <span
-      *ngIf="
-        !recipeEditForm.get('requiredControl').valid &&
-        recipeEditForm.get('imageUrl').touched
-      "
-      >Please enter a valid image URL!</span
-    >
+    <label>Ingredients</label>
     <div formArrayName="ingredients">
-      <label>Enter a recipe ingredient name</label>
+      <div
+        *ngFor="let ingredientControl of getControls(); let i = index"
+        [formGroupName]="i"
+      >
+        <input type="text" formControlName="name" />
+        <input type="number" formControlName="amount" />
+        <button>X</button>
+      </div>
+
       <button class="btn btn-default" type="button" (click)="onAddIngredient()">
         Add Ingredient
       </button>
-      <div *ngFor="let ingredientControl of getControls(); let i = index">
-        <input type="text" [formControlName]="i" />
-      </div>
-      <!-- <input
-        type="text"
-        id="name"
-        placeholder="recipe ingredient"
-        formControlName="ingredients.name"
-      />
-      <label>Enter a recipe ingredient amount</label>
-      <input type="number" id="amount" formControlName="ingredients.amount" /> -->
     </div>
-    <button class="btn btn-success">Submit</button>
+    <button
+      class="btn btn-success"
+      type="submit"
+      [disabled]="!recipeEditForm.valid"
+    >
+      Submit
+    </button>
+    <button class="btn btn-danger" type="button">Cancel</button>
   </form>
 </div>

@@ -13,6 +13,10 @@ export class RecipeListComponent {
   constructor(private recipeService: RecipeService) {}
 
   ngOnInit() {
+    // listen for subject event from recipe service that recipes were added/updated and then update recipes
+    this.recipeService.recipesChanged.subscribe((recipes: Recipe[]) => {
+      this.recipes = recipes;
+    });
     this.recipes = this.recipeService.getRecipes();
   }
 }

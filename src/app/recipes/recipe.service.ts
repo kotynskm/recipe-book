@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Recipe } from './recipe-model';
 import { Ingredient } from '../shared/ingredient-model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
   constructor(private shoppinglistservice: ShoppingListService) {}
+  recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -43,6 +45,22 @@ export class RecipeService {
   getRecipes() {
     // return it as a slice, so that it returns a new array that is a copy (so we won't modify the original in the service)
     return this.recipes.slice();
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(id: number, newRecipe: Recipe) {
+    const recipeToUpdate = this.recipes.find((el) => el.id === id);
+
+    recipeToUpdate.title = newRecipe.title;
+    recipeToUpdate.description = newRecipe.description;
+    recipeToUpdate.imageUrl = newRecipe.imageUrl;
+    recipeToUpdate.ingredients = newRecipe.ingredients;
+
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
