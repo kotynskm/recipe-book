@@ -13,3 +13,8 @@ input[type="number"] {
 input.ng-invalid.ng-touched {
   border: red 1px solid;
 }
+
+img {
+  max-width: 100px;
+  max-height: 100px;
+}

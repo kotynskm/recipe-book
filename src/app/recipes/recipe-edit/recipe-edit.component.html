@@ -26,7 +26,9 @@
       id="imageUrl"
       placeholder="recipe url"
       formControlName="imageUrl"
+      #imageUrl
     />
+    <img [src]="imageUrl.value" class="img-responsive" />
     <label>Ingredients</label>
     <div formArrayName="ingredients">
       <div
@@ -35,7 +37,7 @@
       >
         <input type="text" formControlName="name" />
         <input type="number" formControlName="amount" />
-        <button>X</button>
+        <button type="button" (click)="onDeleteIng(i)">X</button>
       </div>
 
       <button class="btn btn-default" type="button" (click)="onAddIngredient()">
